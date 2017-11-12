@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoMetrics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/autom/vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/autom/vendor1/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/autom/vendor1/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/autom/vendor1/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- date Time picker -->
+    <link href="/autom/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <!-- Custom CSS -->
+    <link href="/autom/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/autom/vendor1/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div ng-controller="HeaderCtrl">
+            <div ng-include src="header.url"></div>
+                <script type="text/ng-template" id="header.html"></script>
+        </div> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                 <div class="col-lg-12">
+                    
+                       <h1 class="page-header">Operator</h1>
+                    
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           <div class="row">
+              <div class="col-lg-12">
+                <form role="form" name="AddNewOperatorForm">
+                    <div class="col-lg-6">
+                         <div class="form-group">
+                           <!-- <label>Text Input</label>-->
+                            <input class="form-control" type="text" id="fname" name="fname" ng-model="operator.f_name" placeholder="First Name*">
+                         </div>
+
+                         <div class="form-group">
+                            <input class="form-control" type="text" id="lname" name="lname" ng-model="operator.l_name" placeholder="Last Name*">
+                         </div>
+                         
+                          <div class="form-group">  
+                            <input type="text" class="form-control input-medium bfh-phone" data-format="+91 dddddddddd" ng-model="operator.phone" placeholder="Phone*" maxlength="10">
+                         </div>
+                          
+                          <div class="form-group">  
+                            <input class="form-control" type="text" id="aphone" name="aphone" ng-model="operator.alternate_phone" placeholder="Alternate Phone*">
+                          </div>
+                          
+                          <div class="form-group">  
+                            <input class="form-control" type="email" id="email" name="email" ng-model="operator.email" placeholder="Email*">
+                          </div>
+                          <div class="form-group">
+                                
+                                 <select class="form-control" ng-model="operator.gender">
+                                    <option>Gender</option>
+                                    <option value="Male">Male</option>
+                                    <option value="Female">Female</option> 
+                                 </select>
+                          </div>
+                          <div class="form-group">
+                            <input class="form-control" type="number" id="age" name="age" ng-model="operator.age" placeholder="Age*">    
+                            
+                          </div>
+                          <label>Date of Birth</label>
+                          <div class="input-group date form_date col-md-5" data-date="" data-date-format="dd MM yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                               
+                                <input class="form-control" size="16" type="text" value="" ng-model="operator.date_of_birth" readonly>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
+                               
+                          </div>
+                          <div class="form-group">
+                            <label>Primary Address*</label>
+                            <input class="form-control" type="text" id="line1" name="line1" ng-model="operator.line1" placeholder="Line 1 *">    
+                            
+                          </div>
+                           
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="line2" name="line2" ng-model="operator.line2" placeholder="Line 2 ">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="locality" name="locality" ng-model="operator.locality" placeholder="Locality *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="landmark" name="landmark" ng-model="operator.landmark" placeholder="Landmark *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="city" name="city" ng-model="operator.city" placeholder="City *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="state" name="state" ng-model="operator.state" placeholder="State *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="number" id="pincode" name="pincode" ng-model="operator.pincode" placeholder="Pincode *">    
+                           </div>
+                           <div class="form-group">
+                            <label>Communication Address*</label>
+                               
+                            
+                          </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="cline1" name="cline1" ng-model="operator.c_line1" placeholder="Line 1 *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="cline2" name="cline2" ng-model="operator.c_line2" placeholder="Line 2 ">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="clocality" name="clocality" ng-model="operator.c_locality" placeholder="Locality *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="clandmark" name="clandmark" ng-model="operator.c_landmark" placeholder="Landmark *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="ccity" name="ccity" ng-model="operator.c_city" placeholder="City *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="cstate" name="cstate" ng-model="operator.c_state" placeholder="State *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="number" id="cpincode" name="cpincode" ng-model="operator.c_pincode" placeholder="Pincode *">    
+                           </div>
+                          
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="form-group">
+                           
+                            <input class="form-control" type="text" id="doj" name="doj" ng-model="operator.date_of_joining" placeholder="Date of Joining*">    
+                            
+                          </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="hq" name="hq" ng-model="operator.highest_qualification" placeholder="Highest Qualification *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="corg" name="corg" ng-model="operator.current_organization" placeholder="Current Organisation ">    
+                           </div>
+                           <div class="form-group">
+                                
+                                 <select class="form-control" ng-model="operator.role">
+                                    <option>Operator Type</option>
+                                    <option value="SUPPLYOPS">Supply Operator</option>
+                                    <option value="DELIVERYBOY">Delivery Operator</option>
+                                     <option value="GARAGEOWNER">Garage Owner</option>
+                                 </select>
+                          </div>
+                           
+                           <div class="form-group">
+                            <label>Account Details </label>
+                            <input class="form-control" type="number" id="accno" name="accno" ng-model="operator.acc_no" placeholder="Account Number">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="ifsc" name="ifsc" ng-model="operator.ifsc_code" placeholder="IFSC Code *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="micr" name="micr" ng-model="operator.micr_code" placeholder="MICR Code *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="bname" name="bname" ng-model="operator.bank_name" placeholder="Bank Name">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="baddr" name="baddr" ng-model="operator.bank_address" placeholder="Bank Address">    
+                           </div>
+                           
+                            <div class="form-group">
+                            <label>Other Details </label>
+                            <input class="form-control" type="text" id="accno" name="accno" ng-model="operator.vehicle_number" placeholder="Vehical Number">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="ifsc" name="ifsc" ng-model="operator.dl_details" placeholder="Driving Lisence ID">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="micr" name="micr" ng-model="operator.aadhar_no" placeholder="Adhar Card Number">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="bname" name="bname" ng-model="operator.police_verfication_id" placeholder="Police Verification ID">    
+                           </div>
+                           <div class="form-group">
+                            
+							<button class="btn btn-primary" ng-click="addOperator(operator)">Create Profile</button> 
+                           </div>
+                    </div>                    
+                    
+                    
+                    
+                </form>
+                </div><!-- col-lg-12 -->
+            </div><!-- row -->
+          
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor1/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor1/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor1/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor1/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- date time picker JS -->
+    <script type="text/javascript" src="../assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../assets/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    
+    $('.form_date').datetimepicker({
+        language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+        format:'dd/mm/yyyy',
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+
+</body>
+
+</html>

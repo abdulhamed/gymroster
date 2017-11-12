@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title>GYM ROASTER</title>
+
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+              <a href="#/gymowner" class="site_title"><i class="fa fa-paw"></i> <span>GYM ROASTER</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <!--<img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>GYM OWNER</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+
+                  <li><a href="#/gymowner"><i class="fa fa-home"></i>HOME</a>
+                  <li><a href="#/gym"><i class="fa fa-home"></i> VIEW GYMS </a>
+                  <li><a href="#/viewTrainer/{{gymDetails.gym_id}}"><i class="fa fa-home"></i> VIEW TRAINER</a>
+                  <li><a href="#/viewCustomer/{{gymDetails.gym_id}}"><i class="fa fa-home"></i> VIEW CUSTOMER</a>
+                  <li><a href="#/viewPackage/{{gymDetails.gym_id}}"><i class="fa fa-home"></i> VIEW PLANS</a>
+                   <li><a href="#/logout"><i class="fa fa-user"></i> LOG OUT</a>
+                </ul>
+              </div>
+              
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <!--<div class="sidebar-footer hidden-small">
+              <a data-toggle="tooltip" data-placement="top" title="Settings">
+                <span class="glyphicon glyphicon-cog" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="FullScreen">
+                <span class="glyphicon glyphicon-fullscreen" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Lock">
+                <span class="glyphicon glyphicon-eye-close" aria-hidden="true"></span>
+              </a>
+              <a data-toggle="tooltip" data-placement="top" title="Logout" href="login.html">
+                <span class="glyphicon glyphicon-off" aria-hidden="true"></span>
+              </a>
+            </div>-->
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+             
+                </li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>GYM Detail</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            
+            <div class="clearfix"></div>
+
+            <div class="row">
+              <div class="col-md-12">
+                <div class="x_panel">
+                  <div class="x_title">
+                    <h2>{{gymDetails.gym_name}}</h2>
+                    <ul class="nav navbar-right panel_toolbox">
+                      <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a>
+                      </li>
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                          <li><a href="#">Settings 1</a>
+                          </li>
+                          <li><a href="#">Settings 2</a>
+                          </li>
+                        </ul>
+                      </li>
+                      <li><a class="close-link"><i class="fa fa-close"></i></a>
+                      </li>
+                    </ul>
+                    <div class="clearfix"></div>
+                  </div>
+
+                  <div class="x_content">
+
+                    <div class="col-md-9 col-sm-9 col-xs-12">
+
+                      <ul class="stats-overview">
+                        <li>
+                          <span class="name">TRAINER</span>
+                          <span class="value text-success"> {{TrainerCount}} </span>
+                        </li>
+                        <li>
+                          <span class="name">CUSTOMER</span>
+                          <span class="value text-success"> {{gymCustomerCount}} </span>
+                        </li>
+                        <li class="hidden-phone">
+                          <span class="name">PLANS</span>
+                          <span class="value text-success"> {{gymPackagesCount}} </span>
+                        </li>
+                      </ul>
+                      <br />
+
+                      <div id="mainb" style="height:350px;"></div>
+
+                      
+
+
+                    </div>
+
+                    <!-- start project-detail sidebar -->
+                    <div class="col-md-3 col-sm-3 col-xs-12">
+
+                      <section class="panel">
+
+                        <div class="x_title">
+                          <h2>GYM DETAILS</h2>
+                          <div class="clearfix"></div>
+                        </div>
+                        <div class="panel-body">
+                          <h3 class="green"><i class="fa fa-paint-brush"></i> {{gymDetails.gym_name}}</h3>
+
+                          <p>MORNING TIME {{gymDetails.gym_morning_open  }} - {{gymDetails.gym_morning_close}}</p>
+                          <p>EVENING TIME {{gymDetails.gym_evening_open  }} -{{gymDetails.gym_evening_close}} </p>
+                          <br />
+
+                          <div class="project_detail">
+                             <p class="title">PHONE</p>
+                            <p>{{gymDetails.gym_phone}}</p>
+                            <p class="title">ADDRESS</p>
+                            <p>{{gymDetails.gym_address}}</p>
+                            <p>{{gymDetails.gym_city}}</p>
+                            <p class="title">CITY</p>
+                             <p>{{gymDetails.gym_city}}</p>
+                              <p class="title">STATE</p>
+                             <p>{{gymDetails.gym_state}}</p>
+                              <p class="title">COUNTRY</p>
+                             <p>{{gymDetails.gym_country}}</p>
+                          </div>
+
+                          <br />
+                          <!--<h5>Project files</h5>
+                          <ul class="list-unstyled project_files">
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Functional-requirements.docx</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-pdf-o"></i> UAT.pdf</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-mail-forward"></i> Email-from-flatbal.mln</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-picture-o"></i> Logo.png</a>
+                            </li>
+                            <li><a href=""><i class="fa fa-file-word-o"></i> Contract-10_12_2014.docx</a>
+                            </li>
+                          </ul>
+                          <br />
+
+                          <div class="text-center mtop20">
+                            <a href="#" class="btn btn-sm btn-primary">Add files</a>
+                            <a href="#" class="btn btn-sm btn-warning">Report contact</a>
+                          </div>
+                        </div>-->
+
+                      </section>
+
+                    </div>
+                    <!-- end project-detail sidebar -->
+
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            Gentelella - Bootstrap Admin Template by <a href="https://colorlib.com">Colorlib</a>
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+    <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- ECharts -->
+    <script src="vendors/echarts/dist/echarts.min.js"></script>
+
+    <!-- Custom Theme Scripts -->
+    <script src="build/js/custom.min.js"></script>
+
+  </body>
+</html>

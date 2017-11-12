@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoMetrics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/autom/vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/autom/vendor1/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/autom/vendor1/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/autom/vendor1/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- date Time picker -->
+    <link href="/autom/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <!-- Custom CSS -->
+    <link href="/autom/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="../vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div ng-controller="HeaderCtrl">
+            <div ng-include src="header.url"></div>
+                <script type="text/ng-template" id="header.html"></script>
+        </div> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                 <div class="col-lg-12">
+                    
+                       <h1 class="page-header">Suppliers</h1>
+                    
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           <div class="row">
+              <div class="col-lg-12">
+                <form role="form" name="AddNewSupplierForm">
+                    <div class="col-lg-6">
+                         <div class="form-group">
+                            <label></label>
+                            <input class="form-control" type="text" id="gname" name="gname" ng-model="supplier.supplier_name" placeholder="Suppliers Name*">
+                         </div>
+
+                          <div class="form-group">
+                            <label>Address*</label>
+                            <input class="form-control" type="text" id="line1" name="line1" ng-model="supplier.line1" placeholder="Line 1 *">    
+                            
+                          </div>
+                          <div class="form-group">
+                            <input class="form-control" type="text" id="line2" name="line2" ng-model="supplier.line2" placeholder="Line 2 ">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="locality" name="locality" ng-model="supplier.locality" placeholder="Locality *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="landmark" name="landmark" ng-model="supplier.landmark" placeholder="Landmark *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="city" name="city" ng-model="supplier.city" placeholder="City *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="state" name="state" ng-model="supplier.state" placeholder="State *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="number" id="pincode" name="pincode" ng-model="supplier.pincode" placeholder="Pincode *">    
+                           </div>
+                         
+                          <div class="form-group">
+                            <label>Landline</label>
+                            <input type="text" class="form-control input-medium bfh-phone" data-format="+91 dddddddddd" ng-model="supplier.landline" placeholder="Phone*" maxlength="10">
+                         </div>
+                          
+                          <div class="form-group">
+                            <label>Representative</label>
+                            <input class="form-control" type="text" id="rname" name="rname" ng-model="supplier.representative_name" placeholder="Name *">
+                          </div>
+                           <div class="form-group">
+                            
+                            <input class="form-control" type="text" id="rphone" name="rphone" ng-model="supplier.representative_phone" placeholder="phone *">
+                          </div>
+                          <div class="form-group">  
+                            <input class="form-control" type="email" id="remail" name="remail" ng-model="supplier.representative_email" placeholder="Email*">
+                          </div>
+                                                  
+                    </div>
+                    <div class="col-lg-6">
+                        
+                           <div class="form-group">
+                            <label>Account Details </label>
+                            <input class="form-control" type="number" id="accno" name="accno" ng-model="supplier.acc_no" placeholder="Account Number">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="ifsc" name="ifsc" ng-model="supplier.ifsc" placeholder="IFSC Code *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="micr" name="micr" ng-model="supplier.micr" placeholder="MICR Code *">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="bname" name="bname" ng-model="supplier.bank_name" placeholder="Bank Name">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="baddr" name="baddr" ng-model="supplier.bank_address" placeholder="Bank Address">    
+                           </div>
+                           
+                            <div class="form-group">
+                            <label>Credit Details </label>
+                            <input class="form-control" type="number" id="creditlimit" name="creditlimit" ng-model="supplier.credit_limit" placeholder="Credit limit">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="creditperiod" name="creditperiod" ng-model="supplier.credit_period" placeholder="Credit Period">    
+                           </div>
+                          
+                           <div class="form-group">
+                            <button class="btn btn-primary" ng-click="addSupplier(supplier)">Submit</button>       
+                           </div>
+                    </div>                    
+                    
+                    
+                    
+                </form>
+                </div><!-- col-lg-12 -->
+            </div><!-- row -->
+          
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor1/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor1/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor1/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor1/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- date time picker JS -->
+    <script type="text/javascript" src="../assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../assets/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    
+    $('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoMetrics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/autom/vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/autom/vendor1/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/autom/vendor1/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/autom/vendor1/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/autom/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/autom/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div ng-controller="HeaderCtrl">
+            <div ng-include src="header.url"></div>
+                <script type="text/ng-template" id="header.html"></script>
+        </div> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                 <div class="col-lg-12">
+                    <div class="col-lg-6">
+                        <h3 class="page-header">New Orders : </h3>
+                    </div>
+					
+                    <div class="col-lg-6">
+					
+                        
+                    </div>
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+			<br>
+            <!-- /.row -->
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                            Order list for Supplier Ops
+                        </div>
+                        <!-- /.panel-heading -->
+                       <div class="panel-body"  ng-repeat="order in operatorOrder">
+                         <div class="row">
+								<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="background-color: #ddd;padding: 10px;">
+									<div class="col-lg-7 col-md-7 col-sm-7 col-xs-7">
+										<p>Order Ref No	:{{order.order_id}}</p>
+										<p>Garage Name  :{{order.garage_name}}</p>
+										<p>{{order.order_item.length}} Part Requests</p>
+									</div>
+									<div class="col-lg-5 col-md-5 col-sm-12 col-xs-12">
+										<center>
+											<a href='#/supplierOpsOrderPartQuoteEntry/{{order.order_id}}'>
+											  <input type="button" class="btn btn-primary" value="View Order">
+											</a>
+										</center>
+									</div>
+									
+		
+                           
+                                                                         </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                </div>
+                <!-- /.col-lg-12 -->
+           </div>
+            <!-- /.row -->
+			
+			<!--<div class="col-lg-6 pull-right">
+				<a href="#/createOrder"> <input type="button" class="btn btn-primary" value="Edit Order" style="float:right;margin: 20px;"></a>
+				<select  required="true" ng-model="EmpModel.garage_id" id="operator_id" name="operator_id" class="form-control" ng-options='operatorName.f_name for operatorName in operatorNames' >
+                        <option value="" selected="selected">Select Operator Name *</option>
+                </select>
+				
+				<a href="#/createOrder"> <input type="button" class="btn btn-primary" value="ASSIGN ORDER " style="float:right;margin: 10px 0 20px;"></a>
+			</div>-->
+			
+			<!--<div class="col-lg-6">
+									 <div class="form-group">
+                            <label></label>
+                            <input class="form-control" type="text" id="pname" name="pname" ng-model="EmpModel.item" placeholder="Part Name/Item">
+                         </div>
+
+                          <div class="form-group">
+                            <input class="form-control" type="text" id="manufacturer" ng-model="EmpModel.manufacturer" name="manufacturer" placeholder="manufacturer">    
+                            
+                          </div>
+                          <div class="form-group">
+                            <input class="form-control" type="text" id="model" name="model" ng-model="EmpModel.model" placeholder="Model">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="year" name="year" ng-model="EmpModel.year" placeholder="Year">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="variant" name="variant" ng-model="EmpModel.varient" placeholder="Variant">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="fueltype" name="fueltype" ng-model="EmpModel.fuel_type" placeholder="Fuel Type">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="subcategory" name="subcategory" ng-model="EmpModel.sub_category" placeholder="Subcategory">    
+                           </div>
+                           <div class="form-group">
+                            <input class="form-control" type="text" id="category" name="category" ng-model="EmpModel.category" placeholder="Category">    
+                           </div>
+                           <div class="form-group">
+                                
+                                 <select class="form-control" ng-model="EmpModel.quantity">
+                                    <option>Qtty</option>
+                                    <option>1</option>
+                                    <option>2</option> 
+                                 </select>
+                          </div>
+						  
+                           
+						   
+						   <center>
+						   <div class="form-group">
+                            <button class="btn btn-primary" type="button" ng-click="display(EmpModel)">Save Item</button>    
+                           </div>
+                            </center>                      
+						</div>
+                
+                   </div>-->
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor1/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor1/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor1/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor1/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
+
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        var d = new Date();
+
+var month = d.getMonth()+1;
+var day = d.getDate();
+
+var output = d.getFullYear() + '/' +
+    ((''+month).length<2 ? '0' : '') + month + '/' +
+    ((''+day).length<2 ? '0' : '') + day;
+
+//alert(output);
+        $('#dataTables-example').DataTable({
+        
+        //    responsive: true
+        });
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>SB Admin 2 - Bootstrap Admin Theme</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/gmsystem/uisource/vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/gmsystem/uisource/vendor/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <link href="/gmsystem/uisource/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Morris Charts CSS -->
+    <link href="/gmsystem/uisource/vendor/morrisjs/morris.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/gmsystem/uisource/vendor/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+    <style type="text/css">
+		
+		.imageCSS {float:left; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+		
+	</style>
+      <script>
+    $(document).ready(function(){
+     //   console.log("hello");
+    });
+    </script>
+    <script>
+      // alert("hello1");
+		Webcam.set({
+			width: 200,
+			height: 200,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach('.my_camera');
+	</script>
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <!-- Navigation -->
+        <nav class="navbar navbar-default navbar-static-top" role="navigation" style="margin-bottom: 0">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="#/superAdmin">Welcome Gym Owner</a>
+            </div>
+            <!-- /.navbar-header -->
+
+
+
+            <div class="navbar-default sidebar" role="navigation">
+                <div class="sidebar-nav navbar-collapse">
+                    <ul class="nav" id="side-menu">
+                        <li>
+                            <a href="#/gymowner"><i class="fa fa-dashboard fa-fw"></i> Dashboard</a>
+                        </li>
+                        <li>
+                            <a href="#/gym"><i class="fa fa-bar-chart-o fa-fw"></i>Gym<span class="fa arrow"></span></a>
+                           
+                            <!-- /.nav-second-level -->
+                        </li>
+                    </ul>
+                </div>
+                <!-- /.sidebar-collapse -->
+            </div>
+            <!-- /.navbar-static-side -->
+        </nav>
+
+        <div id="page-wrapper">
+             <div class="panel-body">
+                       <div class="panel-heading">
+                      <h3>Add Customer</h3>
+                      
+                        </div>
+                   <div class="row">
+                     <div id="my_camera" class="my_camera"></div>
+                      <div id="results"></div>
+                       <input type=button class="btn btn-primary" value="Take Snapshot" id="camera" onclick="take_snapshot()">   
+                    </div> 
+                   <div class="row">
+                      
+	                  
+                     <div class="col-lg-12">
+                     <form role="form" enctype="multipart/form-data" method="POST">
+                        <div class="col-lg-6">
+                                <div class="form-group">
+                                     <label>Customer First Name</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_name">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Last Name</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_last_name">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Email</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_email">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Gender</label>
+                                     <select class="form-control" ng-model="addCustomerData.customer_gender">
+                                         <option value="MALE">Male</option>
+                                         <option value="FEMALE">Female</option>
+
+                                     </select>
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Age</label>
+                                     <input type="number" class="form-control" ng-model="addCustomerData.customer_age">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Height</label>
+                                     <input type="number" class="form-control" ng-model="addCustomerData.customer_height">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Plan</label>
+                                     <!--<input type="text" class="form-control" ng-model="addCustomerData.customer_plan">-->
+                                     <select name="repeatSelect" class="form-control" id="repeatSelect" ng-model="addCustomerData.customer_plan">
+                                           <option ng-repeat="option in packages" value="{{option.gym_package_id}}">{{option.package_name}}</option>
+                                     </select>
+                                </div>
+
+                                <div class="form-group">
+                                     <label>Select Trainer</label>
+                                     <!--<input type="text" class="form-control" ng-model="addCustomerData.customer_plan">-->
+                                     <select name="repeatSelect1" class="form-control" id="repeatSelect1" ng-model="addCustomerData.trainer_id">
+                                           <option ng-repeat="option in trainerData" value="{{option.trainer_id}}">{{option.trainer_name}}{{option.trainer_last_name}}</option>
+                                     </select>
+                                </div>
+                               
+                               
+
+
+                               
+
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="form-group">
+                                     <label>Customer Weight</label>
+                                     <input type="number" class="form-control" ng-model="addCustomerData.customer_weight">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Customer Phone</label>
+                                     <input type="number" class="form-control" ng-model="addCustomerData.customer_phone">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Country</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_country">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>State</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_state">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>City</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_city">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>Address</label>
+                                     <input type="text" class="form-control" ng-model="addCustomerData.customer_address">
+                                     
+                                </div>
+                                 <div class="form-group">
+                                     <!--<label>Address</label>-->
+                                     <input type="hidden" id="customer_image" value="" class="form-control" ng-model="addCustomerData.customer_image">
+                                     
+                                </div>
+                                <div>
+                                    <button type="submit" ng-click="addCustomer(addCustomerData)" class="btn btn-primary">ADD Customer</button>
+                                </div>
+                        </div>
+                     </form>
+                     </div>
+
+                   </div>
+             </div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/gmsystem/uisource/vendor/jquery/jquery.min.js"></script>
+    
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/gmsystem/uisource/vendor/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/gmsystem/uisource/vendor/metisMenu/metisMenu.min.js"></script>
+
+    <!-- Morris Charts JavaScript -->
+    <script src="/gmsystem/uisource/vendor/raphael/raphael.min.js"></script>
+    <script src="/gmsystem/uisource/vendor/morrisjs/morris.min.js"></script>
+    <script src="/gmsystem/uisource/data/morris-data.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/gmsystem/uisource/dist/js/sb-admin-2.js"></script>
+   
+   
+   <script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri){
+                var image = data_uri;
+                 angular.element(document.getElementById('my_camera')).scope().captureImage(image);
+               // alert(data_uri);
+				// display results in page
+				document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                var base64image = document.getElementById("my_camera").src;
+
+                // Webcam.upload( base64image, 'upload.php', function(code, text) {
+                // console.log('Save successfully');
+                // //console.log(text);
+                // });
+                document.getElementById('customer_image').value = image;    
+
+			});
+		}
+
+        $(document).ready(function(){
+            $('#results').css('display','none');
+            
+            $('#camera').click(function(){
+                    $('#my_camera').css('display','none');
+                    $('#results').css('display','block');
+                    $('#results').addClass('imageCSS');
+            });
+        });
+	</script>
+	
+  
+</body>
+
+</html>

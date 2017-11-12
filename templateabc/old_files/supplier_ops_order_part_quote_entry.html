@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoMetrics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/autom/vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/autom/vendor1/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/autom/vendor1/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/autom/vendor1/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- date Time picker -->
+    <link href="/autom/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <!-- Custom CSS -->
+    <link href="/autom/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/autom/vendor1/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div ng-controller="HeaderCtrl">
+            <div ng-include src="header.url"></div>
+                <script type="text/ng-template" id="header.html"></script>
+        </div> 
+
+        <div id="page-wrapper">
+           
+           <div class="row">
+              <div class="col-lg-12">
+                <div class="col-lg-6">
+                        <h3 class="page-header">Order ref no : {{orderData[0].order_id}}</h3>
+						<p><strong>Garage Name : {{orderData[0].garage_name}}</strong></p>
+						<p>Client ref no : {{orderData[0].garage_id}}</p>
+						<p>Address line1 : {{orderData[0].line1}}</p>
+						<p>Address line2 : {{orderData[0].line2}}</p>
+						<p>Address line3 : {{orderData[0].locality}}, {{orderData[0].landmark}}, {{orderData[0].city}}, {{orderData[0].state}}, {{orderData[0].pincode}}, </p>
+						<p>phone number : {{orderData[0].landline}}</p>
+						
+						
+                    </div>
+                </div><!-- col-lg-12 -->
+            </div><!-- row -->
+			<div class="row"><div class="col-lg-12" ng-repeat ="order1 in orderData">
+                <div class="col-lg-6" ng-show = "order1.item_status == 'QUOTE_PENDING'">
+				<h5 style="color:red;">{{quotepending}} QUOTE PENDING</h5>
+		</div></div>
+			</div>
+			<div class="row">
+				<div class="col-lg-6" ng-repeat ="order in orderData">
+				<div class="col-lg-12" ng-show = "order.item_status == 'QUOTE_PENDING'"  style="background-color: #dddddd;color: black;border-color: #dddddd;padding:5px;margin:5px;">
+                    <p> {{ $index+1 }}. {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.variant}}, {{order.type}}, {{order.item}}</p>
+					<hr>
+					<label>Availability :</label>
+					<label class="radio-inline">
+						<input type="radio" ng-model="quote.availability" value="Yes" name="optavailability">Yes	
+					</label>
+					<label class="radio-inline">
+						<input type="radio" ng-model="quote.availability" value="No" name="optavailability">No
+					</label>
+					<div class="form-group">
+						  <label for="sel1">Fulfilled by :</label>
+						  <!--<select class="form-control" id="sel1">
+							<option>Select</option>
+							<option>1</option>
+							<option>2</option>
+							<option>3</option>
+							<option>4</option>
+						  </select>-->
+						  <select ng-model="quote.supplier_id" class="form-control">
+						  
+					  <option ng-repeat="supplierName in supplierNames" value ={{supplierName.supplier_id}} >{{supplierName.supplier_name}}</option>
+				</select>
+					</div>
+					<div class="form-group">
+					<center>
+						<label class="radio-inline">
+							<input type="radio" ng-model="quote.equipment" value="OEM" name="optequipment">OEM
+						</label>
+						<label class="radio-inline">
+							<input type="radio" ng-model="quote.equipment" value="OES" name="optequipment">OES
+						</label>
+						</center>
+					</div>
+					<div class="form-group col-lg-8">
+						<input class="form-control" type="text" id="brand" name="brand"  ng-model="quote.brand" placeholder="Enter Brand">
+					</div>
+					<div class="form-group col-lg-4">
+						<input class="form-control" type="text" id="price" name="price"  ng-model="quote.quoted_price" placeholder="Enter Price">
+					</div>
+					
+                </div>
+				<div class="col-lg-12" style="margin-bottom: 50px;" ng-show = "order.item_status == 'QUOTE_PENDING'">
+				<div class="form-group pull-right">
+                        <!--<a href="#/supplierOpsOrderPartQuoteEntry/{{order.item_id}}"><button class="btn btn-primary" type="button" ng-click="updateOrderItem(quote,order.item_id)">Submit</button></a>    -->
+                        <button class="btn btn-primary" type="button" ng-click="updateOrderItemSupplyops(quote,order.item_id)">Submit</button>   
+                </div>
+				</div>
+				<!--sjfvh-->
+				
+				<div class="col-lg-12" ng-show = "order.item_status == 'QUOTED'"  style="background-color: #dddddd;color: black;border-color: #dddddd;padding:5px;margin:5px;">
+                    <p> {{ $index+1 }}. {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.variant}}, {{order.type}}, {{order.item}}</p>
+					<hr>
+				<h5 ng-show = "order.item_status == 'QUOTED'><span style="color:blue;">Awaiting Confirmation</span><span style="float:right;color:green;">QUOTE ENTERED:{{order.quoted_price}}</span></h5>
+				
+
+                </div>
+			
+			<!--<div class="col-lg-12" ng-show = "order.item_status == 'CONFIRMED'"  style="background-color: #dddddd;color: black;border-color: #dddddd;padding:5px;margin:5px;">
+                    <p> {{ $index+1 }}. {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.variant}}, {{order.type}}, {{order.item}}</p>
+					<hr>
+					
+					
+                        </div>-->
+			
+			<div class="col-lg-12" ng-show="order.item_status == 'CONFIRMED'" style="background-color: #dddddd;color: black;border-color: #dddddd;margin:5px;margin-bottom:40px;webkit-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);border-radius:5px;">
+					<p><strong> Status : </strong>Item Confirmed</p>
+					<p><strong> {{ $index+1 }}.</strong> {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.varient}}, {{order.fuel_type}}, {{order.item}}</p>
+					<hr>
+					<p><strong>Availability : </strong>{{order.availability}}</p>
+					<p><strong>Fulfilled by : </strong>{{order.operator_detail[0]['f_name']}} {{order.operator_detail[0]['l_name']}}</p>
+					<p><strong>Part Type : </strong>{{order.equipment}}</p>
+					<p><strong>Brand : </strong>{{order.brand}}</p>
+					<p><strong>Quoted Price : </strong>{{order.quoted_price}}</p>
+					<div class="form-group col-lg-6">
+						<input class="form-control" type="text" id="mrp" name="mrp" ng-model="finale.mrp" placeholder="Enter MRP">
+					</div>
+					<div class="form-group col-lg-6">
+						<input class="form-control" type="text" id="landing_price" name="landing_price" ng-model="finale.landing_price" placeholder="Enter Landing Price">
+					</div>
+					<div class="form-group">
+					<label>Payment :</label>
+					<center>
+						<label class="radio-inline">
+							<input type="radio" value="Cash" ng-model="finale.supplier_payment_mode" name="optpayment">Cash
+						</label>
+						<label class="radio-inline">
+							<input type="radio"  value="Credit" ng-model="finale.supplier_payment_mode" name="optpayment">Credit
+						</label>
+					</center>
+					</div>
+					<div class="form-group">
+						<label>Attach the suppliers invoice :</label>
+						<input type="file" name="img[]" class="file">
+					</div>
+				</div>
+			        <div class="col-lg-12" ng-show="order.item_status == 'CONFIRMED'" style="margin-bottom: 50px;">
+				<div class="form-group pull-right">
+                        <!--<a href="#/supplierOpsOrderPartQuoteEntry/{{order.item_id}}"><button class="btn btn-primary" type="button" ng-click="updateOrderItem(quote,order.item_id)">Submit</button></a>    -->
+                        <button class="btn btn-primary" type="button" ng-click="finalOrderItemSupplyops(finale,order.item_id)">Submit</button>   
+                </div>
+				</div>
+			<div class="col-lg-12" ng-show="order.item_status == 'INVOICE_GENERATED'" style="background-color: #dddddd;color: black;border-color: #dddddd;margin:5px;margin-bottom:40px;webkit-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);border-radius:5px;">
+					<p ng-model="delivery.status"><strong> Status : </strong>Invoice Generated</p>
+					<p><strong> Items Purchased </strong></p>
+					<p><strong> {{ $index+1 }}.</strong> {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.varient}}, {{order.fuel_type}}, {{order.item}}</p>
+					<hr>
+					<p><strong>Availability : </strong>{{order.availability}}</p>
+					<p><strong>Fulfilled by : </strong>{{order.operator_detail[0]['f_name']}} {{order.operator_detail[0]['l_name']}}</p>
+					<p><strong>Part Type : </strong>{{order.equipment}}</p>
+					<p><strong>Brand : </strong>{{order.brand}}</p>
+					<p><strong>Quoted Price : </strong>&#x20B9; {{order.quoted_price}}, <strong>MRP : </strong>&#x20B9; {{order.mrp}}, <strong>Landing Price : </strong>&#x20B9; {{order.landing_price}}</p>
+					<p><strong>Payment Mode : </strong>{{order.supplier_payment_mode}}</p>
+					<div class="form-group">
+					<label for="sel1">Select Delivery Operator :</label>
+					<select ng-model="delivery.delivered_id" class="form-control">
+						  
+					  <option ng-repeat="deliveryName in deliveryNames" value ={{deliveryName.user_id}} >{{deliveryName.f_name}} {{deliveryName.l_name}}</option>
+				</select>
+					</div>
+					<div class="form-group pull-right">
+                        <!--<a href="#/supplierOpsOrderPartQuoteEntry/{{order.item_id}}"><button class="btn btn-primary" type="button" ng-click="updateOrderItem(quote,order.item_id)">Submit</button></a>    -->
+                        <button class="btn btn-primary" type="button" ng-click="assignDeliveryBoySupplyops(delivery,order.item_id)">Send Request</button>   
+                </div>
+					
+				</div>
+			
+			<div class="col-lg-12" ng-show="order.item_status == 'DELIVERYBOY_ASSIGNED'" style="background-color: #dddddd;color: black;border-color: #dddddd;margin:5px;margin-bottom:40px;webkit-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    -moz-box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);
+    box-shadow: 2px 1px 13px -1px rgba(0,0,0,0.75);border-radius:5px;">
+					<p ng-model="delivery.status"><strong> Status : </strong>Awaiting Delivery Boy Confirmation</p>
+					<p><strong> Items Purchased </strong></p>
+					<p><strong> {{ $index+1 }}.</strong> {{order.manufacturer}}, {{order.model}}, {{order.year}}, {{order.varient}}, {{order.fuel_type}}, {{order.item}}</p>
+					<hr>
+					
+					
+					
+				</div>
+			
+			
+			
+			
+			
+			
+			
+			
+			
+				</div>
+				<!--sjfvh-->
+			</div>
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor1/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor1/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor1/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor1/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="/dist/js/sb-admin-2.js"></script>
+    <!-- date time picker JS -->
+    <script type="text/javascript" src="/assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="/assets/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    
+    $('.form_date').datetimepicker({
+        language:  'fr',
+        weekStart: 1,
+        todayBtn:  1,
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <!-- Meta, title, CSS, favicons, etc. -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+	  
+    <title>GYMROASTER</title>
+     
+   <script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+     <script src="vendors/jquery/dist/jquery.min.js"></script>
+    <!-- Bootstrap -->
+    <link href="vendors/bootstrap/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link href="vendors/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+    <!-- NProgress -->
+    <link href="vendors/nprogress/nprogress.css" rel="stylesheet">
+    <!-- iCheck -->
+    <link href="vendors/iCheck/skins/flat/green.css" rel="stylesheet">
+    <!-- bootstrap-wysiwyg -->
+    <link href="vendors/google-code-prettify/bin/prettify.min.css" rel="stylesheet">
+    <!-- Select2 -->
+    <link href="vendors/select2/dist/css/select2.min.css" rel="stylesheet">
+    <!-- Switchery -->
+    <link href="vendors/switchery/dist/switchery.min.css" rel="stylesheet">
+    <!-- starrr -->
+    <link href="vendors/starrr/dist/starrr.css" rel="stylesheet">
+    <!-- bootstrap-daterangepicker -->
+    <link href="vendors/bootstrap-daterangepicker/daterangepicker.css" rel="stylesheet">
+
+    <!-- Custom Theme Style -->
+    <link href="build/css/custom.min.css" rel="stylesheet">
+     <script type="text/javascript" src="js/webcamjs/webcam.min.js"></script>
+    <script type="text/javascript" src="js/webcamjs/webcam.js"></script>
+    <style type="text/css">
+		
+		.imageCSS {float:left; margin:20px; padding:20px; border:1px solid; background:#ccc; }
+		
+	</style>
+    <script>
+      // alert("hello1");
+		Webcam.set({
+			width: 200,
+			height: 200,
+			image_format: 'jpeg',
+			jpeg_quality: 90
+		});
+		Webcam.attach('.my_camerat');
+	</script>
+  </head>
+
+  <body class="nav-md">
+    <div class="container body">
+      <div class="main_container">
+        <div class="col-md-3 left_col">
+          <div class="left_col scroll-view">
+            <div class="navbar nav_title" style="border: 0;">
+             
+              <a href="#/gymOwner" class="site_title"><i class="fa fa-paw"></i> <span>GYMROASTER</span></a>
+            </div>
+
+            <div class="clearfix"></div>
+
+            <!-- menu profile quick info -->
+            <div class="profile clearfix">
+              <div class="profile_pic">
+                <!--<img src="images/img.jpg" alt="..." class="img-circle profile_img">-->
+              </div>
+              <div class="profile_info">
+                <span>Welcome,</span>
+                <h2>GYM OWNER</h2>
+              </div>
+            </div>
+            <!-- /menu profile quick info -->
+
+            <br />
+
+            <!-- sidebar menu -->
+            <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+              <div class="menu_section">
+                <h3>General</h3>
+                <ul class="nav side-menu">
+                  <li><a href="#/gymowner"><i class="fa fa-home"></i> Home</a></li>
+                  <li><a href="#/gym"><i class="fa fa-home"></i> GYM</a></li>
+                </ul>
+              </div>
+
+            </div>
+            <!-- /sidebar menu -->
+
+            <!-- /menu footer buttons -->
+            <!-- /menu footer buttons -->
+          </div>
+        </div>
+
+        <!-- top navigation -->
+        <div class="top_nav">
+          <div class="nav_menu">
+            <nav>
+              <div class="nav toggle">
+                <a id="menu_toggle"><i class="fa fa-bars"></i></a>
+              </div>
+
+            </nav>
+          </div>
+        </div>
+        <!-- /top navigation -->
+
+        <!-- page content -->
+        <div class="right_col" role="main">
+          <div class="">
+            <div class="page-title">
+              <div class="title_left">
+                <h3>ADD TRAINER</h3>
+              </div>
+
+              <div class="title_right">
+                <div class="col-md-5 col-sm-5 col-xs-12 form-group pull-right top_search">
+                  <div class="input-group">
+                    <!--<input type="text" class="form-control" placeholder="Search for...">
+                    <span class="input-group-btn">
+                      <button class="btn btn-default" type="button">Go!</button>
+                    </span>-->
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="clearfix"></div>
+              <div class="row">
+                     <div id="my_camerat" class="my_camerat"></div>
+                      <div id="results"></div>
+                       <input type=button class="btn btn-primary" value="Take Snapshot" id="camera" onclick="take_snapshot()">   
+                    </div>
+            <div class="row">
+              <div class="col-md-12 col-sm-12 col-xs-12">
+                <div class="x_panel">
+                 
+                  <div class="x_content">
+                    <br />
+                     <form role="form">
+                        <div class="col-lg-6">
+                                <div class="form-group">
+                                     <label>Trainer First Name</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_name">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Last Name</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_last_name">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Email</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_email">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Gender</label>
+                                     <select class="form-control" ng-model="addTrainerData.trainer_gender">
+                                         <option value="Male">Male</option>
+                                         <option value="Female">Female</option>
+
+                                     </select>
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Age</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_age">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Height</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_height">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Chest</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_chest">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer experience</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_experience">
+                                     
+                                </div>
+                               
+                               
+
+
+                               
+
+                        </div>
+                        <div class="col-lg-6">
+                              <div class="form-group">
+                                     <label>Trainer Weight</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_weight">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Trainer Phone</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_phone">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Country</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_country">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>State</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_state">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>City</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_city">
+                                     
+                                </div>
+
+                                <div class="form-group">
+                                     <label>Address</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_address">
+                                     
+                                </div>
+                                <div class="form-group">
+                                     <label>Salary</label>
+                                     <input class="form-control" ng-model="addTrainerData.trainer_salary">
+                                     
+                                </div>
+                                 <div class="form-group">
+                                     <label>Awards And Medals</label>
+                                     <input class="form-control" ng-model="addTrainerData.awards_medals">
+                                     
+                                </div>
+                                 <div class="form-group">
+                                     <!--<label>Address</label>-->
+                                     <input type="hidden" id="trainer_image" value="" class="form-control" ng-model="addTrainerData.trainer_image">
+                                     
+                                </div>
+                                
+                                <div>
+                                    <button type="submit" ng-click="addTrainer(addTrainerData)" class="btn btn-primary">ADD TRAINER</button>
+                                </div>
+                        </div>
+                     </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+
+
+
+           
+
+
+            
+          </div>
+        </div>
+        <!-- /page content -->
+
+        <!-- footer content -->
+        <footer>
+          <div class="pull-right">
+            COPYRIGHT 2017 GYMROASTER 
+          </div>
+          <div class="clearfix"></div>
+        </footer>
+        <!-- /footer content -->
+      </div>
+    </div>
+
+    <!-- jQuery -->
+  
+   
+    <!-- Bootstrap -->
+    <script src="vendors/bootstrap/dist/js/bootstrap.min.js"></script>
+    <!-- FastClick -->
+    <script src="vendors/fastclick/lib/fastclick.js"></script>
+    <!-- NProgress -->
+    <script src="vendors/nprogress/nprogress.js"></script>
+    <!-- bootstrap-progressbar -->
+    <script src="vendors/bootstrap-progressbar/bootstrap-progressbar.min.js"></script>
+    <!-- iCheck -->
+    <script src="vendors/iCheck/icheck.min.js"></script>
+    <!-- bootstrap-daterangepicker -->
+    <script src="vendors/moment/min/moment.min.js"></script>
+    <script src="vendors/bootstrap-daterangepicker/daterangepicker.js"></script>
+    <!-- bootstrap-wysiwyg -->
+    <script src="vendors/bootstrap-wysiwyg/js/bootstrap-wysiwyg.min.js"></script>
+    <script src="vendors/jquery.hotkeys/jquery.hotkeys.js"></script>
+    <script src="vendors/google-code-prettify/src/prettify.js"></script>
+    <!-- jQuery Tags Input -->
+    <script src="vendors/jquery.tagsinput/src/jquery.tagsinput.js"></script>
+    <!-- Switchery -->
+    <script src="vendors/switchery/dist/switchery.min.js"></script>
+    <!-- Select2 -->
+    <script src="vendors/select2/dist/js/select2.full.min.js"></script>
+    <!-- Parsley -->
+    <script src="vendors/parsleyjs/dist/parsley.min.js"></script>
+    <!-- Autosize -->
+    <script src="vendors/autosize/dist/autosize.min.js"></script>
+    <!-- jQuery autocomplete -->
+    <script src="vendors/devbridge-autocomplete/dist/jquery.autocomplete.min.js"></script>
+    <!-- starrr -->
+    <script src="vendors/starrr/dist/starrr.js"></script>
+    <!-- Custom Theme Scripts -->
+    <script src="buildjs/custom.min.js"></script>
+       <script language="JavaScript">
+		function take_snapshot() {
+			// take snapshot and get image data
+			Webcam.snap( function(data_uri){
+                var image = data_uri;
+                 angular.element(document.getElementById('my_camerat')).scope().TrainercaptureImage(image);
+               // alert(data_uri);
+				// display results in page
+				document.getElementById('results').innerHTML = '<img src="'+data_uri+'"/>';
+                var base64image = document.getElementById("my_camerat").src;
+
+                // Webcam.upload( base64image, 'upload.php', function(code, text) {
+                // console.log('Save successfully');
+                // //console.log(text);
+                // });
+                document.getElementById('trainer_image').value = image;    
+
+			});
+		}
+
+        $(document).ready(function(){
+            alert("hello");
+            $('#results').css('display','none');
+            
+            $('#camera').click(function(){
+                    $('#my_camerat').css('display','none');
+                    $('#results').css('display','block');
+                    $('#results').addClass('imageCSS');
+            });
+        });
+	</script>
+	
+  </body>
+</html>

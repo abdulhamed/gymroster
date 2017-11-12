@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>AutoMetrics</title>
+
+    <!-- Bootstrap Core CSS -->
+    <link href="/autom/vendor1/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- MetisMenu CSS -->
+    <link href="/autom/vendor1/metisMenu/metisMenu.min.css" rel="stylesheet">
+
+    <!-- DataTables CSS -->
+    <link href="/autom/vendor1/datatables-plugins/dataTables.bootstrap.css" rel="stylesheet">
+
+    <!-- DataTables Responsive CSS -->
+    <link href="/autom/vendor1/datatables-responsive/dataTables.responsive.css" rel="stylesheet">
+    <!-- date Time picker -->
+    <link href="/autom/assets/css/bootstrap-datetimepicker.min.css" rel="stylesheet" media="screen">
+    <!-- Custom CSS -->
+    <link href="/autom/dist/css/sb-admin-2.css" rel="stylesheet">
+
+    <!-- Custom Fonts -->
+    <link href="/autom/vendor1/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body>
+
+    <div id="wrapper">
+
+        <div ng-controller="HeaderCtrl">
+            <div ng-include src="header.url"></div>
+                <script type="text/ng-template" id="header.html"></script>
+        </div> 
+
+        <div id="page-wrapper">
+            <div class="row">
+                 <div class="col-lg-12">
+                    
+                     <!--  <h1 class="page-header">Garage Details</h1>-->
+                    <h3 class="page-header"><b>View Operator Details</b>
+<a href="#/editOperator/{{operatorDetails.user_id}}" class="btn btn-primary " style="float: right;padding-bottom: 2px; padding-top: 3px;" role="button"><b>Edit Operator Details </b></a>
+
+
+                   <!--     <span ng-switch="order.assigned_care_executive_id">
+                            <!-- ngSwitchWhen: 0 -->
+                            <!-- ngSwitchDefault:  <span ng-switch-default="" class="ng-scope">
+                               <button class="btn btm-danger " ng-click="CancelOrder(118)" style="float: right; padding-bottom: 2px; padding-top: 3px; margin-right:5px; "><b>Cancel Order</b></button>-->
+  <!--                          </span>-->
+                        </span>
+                    </h3>
+                    
+                </div>
+                <!-- /.col-lg-12 -->
+            </div>
+           <div class="row">
+              <div class="col-lg-12">
+                <div class="col-lg-7">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <!-- <h4>Executive details...</h4> -->
+                           
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tbody>
+                                        <tr>
+                                            <td><b>Operator Name </b></td>
+                                            <td class="ng-binding">{{operatorDetails.f_name}} {{operatorDetails.l_name}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Role</b></td>
+                                            <td class="ng-binding">{{operatorDetails.role}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Email </b></td>
+                                            <td class="ng-binding">{{operatorDetails.email}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Gender </b></td>
+                                            <td class="ng-binding">{{operatorDetails.gender}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Age </b></td>
+                                            <td class="ng-binding">{{operatorDetails.age}}</td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Date of Birth </b></td>
+                                            <td class="ng-binding">{{operatorDetails.date_of_birth}}</td>
+                                        </tr>
+                                          <tr>
+                                            <td><b>Address</b></td>
+                                            <td class="ng-binding">{{operatorDetails.line1}}<br>{{operatorDetails.line2}}<br>{{operatorDetails.locality}}<br>{{operatorDetails.city}},{{operatorDetails.pincode}}  </td>
+                                        </tr>
+<!--                                           <tr>
+                                            <td><b>Locality</b></td>
+                                            <td class="ng-binding">Abu Thomas</td>
+                                        </tr>-->
+                                          <tr>
+                                            <td><b>Landmark</b></td>
+                                            <td class="ng-binding">{{operatorDetails.landmark}}</td>
+                                        </tr>
+                                       <tr>
+                                 <!--           <td><b>City</b></td>
+                                            <td class="ng-binding">Abu Thomas</td>
+                                        </tr>-->
+                                        <tr>
+                                            <td><b>State</b></td>
+                                            <td class="ng-binding">{{operatorDetails.state}}</td>
+                                        </tr>
+                                        
+                                        
+                                                                                  <tr>
+                                            <td><b>Communication Address</b></td>
+                                            <td class="ng-binding">{{operatorDetails.c_line1}}<br>{{operatorDetails.c_line2}}<br>{{operatorDetails.c_locality}}<br>{{operatorDetails.c_city}},{{operatorDetails.c_pincode}}  </td>
+                                        </tr>
+<!--                                           <tr>
+                                            <td><b>Locality</b></td>
+                                            <td class="ng-binding">Abu Thomas</td>
+                                        </tr>-->
+                                          <tr>
+                                            <td><b>Communication Landmark</b></td>
+                                            <td class="ng-binding">{{operatorDetails.c_landmark}}</td>
+                                        </tr>
+                                       <tr>
+                                 <!--           <td><b>City</b></td>
+                                            <td class="ng-binding">Abu Thomas</td>
+                                        </tr>-->
+                                        <tr>
+                                            <td><b>Communication State</b></td>
+                                            <td class="ng-binding">{{operatorDetails.c_state}}</td>
+                                        </tr>
+                                    <!--     <tr>
+                                            <td><b>Pincode</b></td>
+                                            <td class="ng-binding">Abu Thomas</td>
+                                        </tr>-->
+                                          <tr>
+                                            <td><b>Phone</b></td>
+                                            <td class="ng-binding">{{operatorDetails.phone}}</td>
+                                        </tr>
+                                         <tr>
+                                            <td><b>Alternate Phone</b></td>
+                                            <td class="ng-binding">{{operatorDetails.alternate_phone}}</td>
+                                        </tr>  
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                   
+                </div>
+                             <div class="col-lg-5">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">
+                           <!-- <h4>Executive details...</h4> -->
+                        </div>
+                        <!-- /.panel-heading -->
+                        <div class="panel-body">
+                            <div class="table-responsive">
+                                <table class="table table-striped table-bordered table-hover">
+                                    <tbody>        
+                                        
+                                        <tr>
+                                            <td><b>Account Details </b></td>
+                                            <td class="ng-binding"><b>Bank Name - {{operatorDetails.bank_name}}</b><br>
+                                                
+                                                <b>Account Number -{{operatorDetails.acc_no}}</b> <br>
+                                                <b>IFSC Code  -{{operatorDetails.ifsc}} </b><br>
+                                                <b>MICR Code  -{{operatorDetails.micr}} </b><br>
+                                                <b>Bank Address-{{operatorDetails.bank_address}} </b><br>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                      
+                                            <td><b>Date of Joining</b></td>
+                                            <td class="ng-binding">{{operatorDetails.date_of_joining}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Highest Qualification</b></td>
+                                            <td class="ng-binding">{{operatorDetails.highest_qualification}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Current Organization</b></td>
+                                            <td class="ng-binding">{{operatorDetails.current_organization}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Vehical  Number</b></td>
+                                            <td class="ng-binding">{{operatorDetails.vehicle_number}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Driving License No.</b></td>
+                                            <td class="ng-binding">{{operatorDetails.dl_details}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Driving License No.</b></td>
+                                            <td class="ng-binding">{{operatorDetails.dl_details}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Aadhar No.</b></td>
+                                            <td class="ng-binding">{{operatorDetails.aadhar_no}} </td>
+                                        </tr>
+                                        <tr>
+                                            <td><b>Police Verification ID.</b></td>
+                                            <td class="ng-binding">{{operatorDetails.police_verfication_id}} </td>
+                                        </tr>
+                                        
+                                    </tbody>
+                                </table>
+
+                            </div>
+                            <!-- /.table-responsive -->
+                            
+                        </div>
+                        <!-- /.panel-body -->
+                    </div>
+                    <!-- /.panel -->
+                   
+                </div>
+                </div><!-- col-lg-12 -->
+            </div><!-- row -->
+          
+        </div>
+        <!-- /#page-wrapper -->
+
+    </div>
+    <!-- /#wrapper -->
+
+    <!-- jQuery -->
+    <script src="/vendor1/jquery/jquery.min.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="/vendor1/bootstrap/js/bootstrap.min.js"></script>
+
+    <!-- Metis Menu Plugin JavaScript -->
+    <script src="/vendor1/metisMenu/metisMenu.min.js"></script>
+
+    <!-- DataTables JavaScript -->
+    <script src="/vendor1/datatables/js/jquery.dataTables.min.js"></script>
+    <script src="/vendor1/datatables-plugins/dataTables.bootstrap.min.js"></script>
+    <script src="/vendor1/datatables-responsive/dataTables.responsive.js"></script>
+
+    <!-- Custom Theme JavaScript -->
+    <script src="../dist/js/sb-admin-2.js"></script>
+    <!-- date time picker JS -->
+    <script type="text/javascript" src="../assets/js/bootstrap-datetimepicker.js" charset="UTF-8"></script>
+    <script type="text/javascript" src="../assets/js/locales/bootstrap-datetimepicker.fr.js" charset="UTF-8"></script>
+    <!-- Page-Level Demo Scripts - Tables - Use for reference -->
+    <script>
+    $(document).ready(function() {
+        $('#dataTables-example').DataTable({
+            responsive: true
+        });
+    });
+    
+    $('.form_date').datetimepicker({
+        language:  'en',
+        weekStart: 1,
+        todayBtn:  1,
+        format:'yy/mm/dd',
+		autoclose: 1,
+		todayHighlight: 1,
+		startView: 2,
+		minView: 2,
+		forceParse: 0
+    });
+    </script>
+
+</body>
+
+</html>
